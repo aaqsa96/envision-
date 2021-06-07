@@ -26,6 +26,7 @@ class _MyLocationState extends State<MyLocation> {
 
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     super.initState();
     getLoc();
@@ -219,6 +220,4 @@ class _MyLocationState extends State<MyLocation> {
         await Geocoder.local.findAddressesFromCoordinates(coordinates);
     return add;
   }
-  ////
-
 }

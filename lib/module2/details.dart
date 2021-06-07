@@ -32,9 +32,10 @@ class _DetailsState extends State<Details> {
           IconButton(
             icon: Icon(Icons.copy),
             onPressed: () {
-              FlutterClipboard.copy(widget.text).then((value) => _key
-                  .currentState
-                  .showSnackBar(new SnackBar(content: Text('Copied'))));
+              FlutterClipboard.copy(widget.text)
+                  .then((value) => _key.currentState
+                      // ignore: deprecated_member_use
+                      .showSnackBar(new SnackBar(content: Text('Copied'))));
             },
           )
         ],

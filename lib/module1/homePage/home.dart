@@ -6,7 +6,6 @@ import 'package:object_detection/module1/realtime/live_camera.dart';
 import 'package:object_detection/module3/battery.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:object_detection/constant.dart';
-//import 'package:object_detection/splashScreen.dart';
 import 'package:swipedetector/swipedetector.dart';
 import 'package:object_detection/module4/location.dart';
 import 'package:object_detection/module2/textReader.dart';
@@ -17,6 +16,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  // ignore: unused_field
   String _swipeDirection = "";
   @override
   Widget build(BuildContext context) {
@@ -89,9 +89,11 @@ class _HomeState extends State<Home> {
                         _swipeDirection = "Swipe Up";
                       },
                     );
-                    // Navigator.push(context,
-                    // MaterialPageRoute(builder: (context) => homeDetailScreen()));
-                    Navigator.of(context).push(
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LiveFeed(cameras)));
+                    /*Navigator.of(context).push(
                       PageRouteBuilder(
                           fullscreenDialog: true,
                           transitionDuration: Duration(seconds: 1),
@@ -111,8 +113,8 @@ class _HomeState extends State<Home> {
                               // animation,
                               child: child,
                             );
-                          }),
-                    );
+                          }),*/
+                    // );
                   }),
               ///////2////
               SwipeDetector(

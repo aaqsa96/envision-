@@ -6,6 +6,9 @@ import 'package:object_detection/module1/homePage/home.dart';
 import 'package:object_detection/module1/realtime/live_camera.dart';
 import 'package:custom_splash/custom_splash.dart';
 import 'package:alan_voice/alan_voice.dart';
+import 'package:object_detection/module2/textReader.dart';
+import 'package:object_detection/module3/battery.dart';
+import 'package:object_detection/module4/location.dart';
 
 List<CameraDescription> cameras;
 
@@ -58,10 +61,12 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     AlanVoice.addButton(
         "a67f457b762c4ffcd92f430e396b45952e956eca572e1d8b807a3e2338fdd0dc/stage");
     AlanVoice.callbacks.add((command) => _handleCommand(command.data));
+    // ignore: deprecated_member_use
     AlanVoice.addConnectionCallback((state) => _handleConnectionState(state));
 
     super.initState();
@@ -75,26 +80,41 @@ class _MyAppState extends State<MyApp> {
 
   void _handleCommand(Map command) {
     print(
-        "************************************************ New command: ${command}");
+        "************************************************ New command: $command");
 
     switch (command["title"]) {
       case "OBJECT_DETECTION":
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => LiveFeed(cameras)));
         break;
-      case "SETTINGS":
+      case "text recognition":
         print(
             "************************************************ SETTINGS CASE EXECUTED **********************");
+
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => TextReader()));
+
         //openSetting();
         break;
-      case "PROFILE":
+      case "battery checker":
+        print(
+            "************************************************ SETTINGS CASE EXECUTED **********************");
+
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => BatteryPage()));
+
+        //openSetting();
+        break;
+      case "location finder":
         print(
             "*********************** PROFILE CASE EXECUTED ------ YOUR STUFF HERE**********************");
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => MyLocation()));
         //openSetting();
         break;
 
       default:
-        print("********************** Unknown command: ${command}");
+        print("********************** Unknown command: $command");
     }
   }
 
